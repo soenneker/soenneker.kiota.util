@@ -2,7 +2,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Soenneker.Kiota.Util.Abstract;
 using Soenneker.Utils.Directory.Registrars;
-using Soenneker.Utils.File.Registrars;
 using Soenneker.Utils.Process.Registrars;
 
 namespace Soenneker.Kiota.Util.Registrars;
@@ -18,7 +17,6 @@ public static class KiotaUtilRegistrar
     public static IServiceCollection AddKiotaUtilAsSingleton(this IServiceCollection services)
     {
         services.AddDirectoryUtilAsSingleton()
-                .AddFileUtilAsSingleton()
                 .AddProcessUtilAsSingleton();
 
         services.TryAddSingleton<IKiotaUtil, KiotaUtil>();
@@ -32,8 +30,8 @@ public static class KiotaUtilRegistrar
     public static IServiceCollection AddKiotaUtilAsScoped(this IServiceCollection services)
     {
         services.AddDirectoryUtilAsScoped()
-                .AddFileUtilAsScoped()
                 .AddProcessUtilAsScoped();
+
         services.TryAddScoped<IKiotaUtil, KiotaUtil>();
 
         return services;
