@@ -1,20 +1,19 @@
 using Soenneker.Kiota.Util.Abstract;
-using Soenneker.Tests.FixturedUnit;
-using Xunit;
+using Soenneker.Tests.HostedUnit;
 
 namespace Soenneker.Kiota.Util.Tests;
 
-[Collection("Collection")]
-public sealed class KiotaUtilTests : FixturedUnitTest
+[ClassDataSource<Host>(Shared = SharedType.PerTestSession)]
+public sealed class KiotaUtilTests : HostedUnitTest
 {
     private readonly IKiotaUtil _util;
 
-    public KiotaUtilTests(Fixture fixture, ITestOutputHelper output) : base(fixture, output)
+    public KiotaUtilTests(Host host) : base(host)
     {
         _util = Resolve<IKiotaUtil>(true);
     }
 
-    [Fact]
+    [Test]
     public void Default()
     {
 
