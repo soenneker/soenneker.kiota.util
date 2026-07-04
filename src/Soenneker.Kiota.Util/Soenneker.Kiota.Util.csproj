@@ -43,6 +43,6 @@
     <ItemGroup>
         <PackageReference Include="Microsoft.OpenApi" Version="3.7.0" />
         <PackageReference Include="Soenneker.Utils.Directory" Version="4.0.876" />
-        <PackageReference Include="Soenneker.Utils.Process" Version="4.0.1496" />
+        <PackageReference Include="Soenneker.Utils.Process" Version="4.0.1497" />
     </ItemGroup>
 </Project>
