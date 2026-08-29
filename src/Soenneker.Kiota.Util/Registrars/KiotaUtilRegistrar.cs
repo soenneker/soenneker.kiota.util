@@ -14,6 +14,8 @@ public static class KiotaUtilRegistrar
     /// <summary>
     /// Adds <see cref="IKiotaUtil"/> as a singleton service. <para/>
     /// </summary>
+    /// <param name="services">Service collection that receives the registration.</param>
+    /// <returns>The same service collection, so additional registrations can be chained.</returns>
     public static IServiceCollection AddKiotaUtilAsSingleton(this IServiceCollection services)
     {
         services.AddDirectoryUtilAsSingleton()
@@ -27,6 +29,8 @@ public static class KiotaUtilRegistrar
     /// <summary>
     /// Adds <see cref="IKiotaUtil"/> as a scoped service. <para/>
     /// </summary>
+    /// <param name="services">Service collection that receives the registration.</param>
+    /// <returns>The same service collection, so additional registrations can be chained.</returns>
     public static IServiceCollection AddKiotaUtilAsScoped(this IServiceCollection services)
     {
         services.AddDirectoryUtilAsScoped()

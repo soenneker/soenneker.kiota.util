@@ -9,20 +9,20 @@ namespace Soenneker.Kiota.Util.Abstract;
 public interface IKiotaUtil
 {
     /// <summary>
-    /// Executes the generate operation.
+    /// Generates kiota.
     /// </summary>
-    /// <param name="fixedPath">The fixed path.</param>
-    /// <param name="clientName">The client name.</param>
-    /// <param name="libraryName">The library name.</param>
-    /// <param name="targetDir">The target dir.</param>
-    /// <param name="cancellationToken">The cancellation token.</param>
-    /// <returns>A task that represents the asynchronous operation.</returns>
+    /// <param name="fixedPath">Path of the fixed to use.</param>
+    /// <param name="clientName">client Name used to communicate with the external service.</param>
+    /// <param name="libraryName">Name of the library to load.</param>
+    /// <param name="targetDir">Target Dir for the generate operation.</param>
+    /// <param name="cancellationToken">Token used to cancel the operation.</param>
+    /// <returns>A task that completes when the generate operation is complete.</returns>
     ValueTask Generate(string fixedPath, string clientName, string libraryName, string targetDir, CancellationToken cancellationToken = default);
 
     /// <summary>
-    /// Executes the ensure installed operation.
+    /// Ensures installed for the kiota.
     /// </summary>
-    /// <param name="cancellationToken">The cancellation token.</param>
-    /// <returns>A task that represents the asynchronous operation.</returns>
+    /// <param name="cancellationToken">Token used to cancel the operation.</param>
+    /// <returns>A task that completes when the ensure installed operation is complete.</returns>
     ValueTask EnsureInstalled(CancellationToken cancellationToken = default);
 }
