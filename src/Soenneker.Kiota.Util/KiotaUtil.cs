@@ -32,7 +32,7 @@ public sealed class KiotaUtil : IKiotaUtil
                             .NoSync();
 
         var outputDir = $"src/{libraryName}";
-        string arguments = $"generate -l CSharp -d {QuoteArgument(fixedPath)} -o {QuoteArgument(outputDir)} -c {QuoteArgument(clientName)} -n {QuoteArgument(libraryName)} --ebc --co --cc";
+        string arguments = $"generate -l CSharp -d {QuoteArgument(fixedPath)} -o {QuoteArgument(outputDir)} -c {QuoteArgument(clientName)} -n {QuoteArgument(libraryName)} --ebc --cc";
 
         await _processUtil.Start("kiota", targetDir, arguments, waitForExit: true, cancellationToken: cancellationToken)
                           .NoSync();

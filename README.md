@@ -35,6 +35,6 @@ await kiota.Generate(
 
 `Generate` runs Kiota with `targetDir` as its working directory and writes the client beneath `targetDir/src/<libraryName>`. `clientName` must be a C# identifier and `libraryName` must be a dot-separated C# namespace. Paths containing spaces are supported.
 
-Generation cleans Kiota's output directory before writing it. Keep hand-written files outside that directory. A non-zero tool exit, installation failure, or cancellation is surfaced to the caller.
+Generation writes into Kiota's output directory without deleting it first, allowing a project file to remain beside regenerated sources. Remove stale generated files before calling `Generate` when required. A non-zero tool exit, installation failure, or cancellation is surfaced to the caller.
 
 Use `AddKiotaUtilAsScoped()` when its directory and process dependencies should follow a DI scope; otherwise use the singleton registration.
