@@ -4,23 +4,23 @@ using System.Threading.Tasks;
 namespace Soenneker.Kiota.Util.Abstract;
 
 /// <summary>
-/// A utility library for Kiota and OpenAPI related operations
+/// Generates C# API clients with the Kiota command-line tool.
 /// </summary>
 public interface IKiotaUtil
 {
     /// <summary>
-    /// Generates kiota.
+    /// Generates a C# client from an OpenAPI document.
     /// </summary>
-    /// <param name="fixedPath">Path of the fixed to use.</param>
-    /// <param name="clientName">client Name used to communicate with the external service.</param>
-    /// <param name="libraryName">Name of the library to load.</param>
-    /// <param name="targetDir">Target Dir for the generate operation.</param>
+    /// <param name="fixedPath">Path or URL to the OpenAPI document.</param>
+    /// <param name="clientName">C# class name for the generated client.</param>
+    /// <param name="libraryName">C# namespace for the generated client and its output directory under <c>src</c>.</param>
+    /// <param name="targetDir">Working directory in which generation runs.</param>
     /// <param name="cancellationToken">Token used to cancel the operation.</param>
     /// <returns>A task that completes when the generate operation is complete.</returns>
     ValueTask Generate(string fixedPath, string clientName, string libraryName, string targetDir, CancellationToken cancellationToken = default);
 
     /// <summary>
-    /// Ensures installed for the kiota.
+    /// Installs or updates the global Kiota .NET tool.
     /// </summary>
     /// <param name="cancellationToken">Token used to cancel the operation.</param>
     /// <returns>A task that completes when the ensure installed operation is complete.</returns>
