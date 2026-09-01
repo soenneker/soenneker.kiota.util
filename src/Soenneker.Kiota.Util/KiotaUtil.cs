@@ -1,5 +1,6 @@
 using System;
 using System.Text;
+using Soenneker.Utils.PooledStringBuilders;
 using System.Threading;
 using System.Threading.Tasks;
 using Soenneker.Extensions.ValueTask;
@@ -82,7 +83,8 @@ public sealed class KiotaUtil : IKiotaUtil
 
     private static string QuoteArgument(string value)
     {
-        var result = new StringBuilder(value.Length + 2).Append('"');
+        using var result = new PooledStringBuilder(value.Length + 2);
+        result.Append('"');
         var backslashes = 0;
 
         foreach (char character in value)
@@ -108,6 +110,7 @@ public sealed class KiotaUtil : IKiotaUtil
         }
 
         result.Append('\\', backslashes * 2);
-        return result.Append('"').ToString();
+        result.Append('"');
+        return result.ToString();
     }
 }
