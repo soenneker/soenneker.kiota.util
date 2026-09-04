@@ -10,6 +10,7 @@ using Soenneker.Utils.Process.Abstract;
 
 namespace Soenneker.Kiota.Util;
 
+/// <inheritdoc cref="IKiotaUtil" />
 public sealed class KiotaUtil : IKiotaUtil
 {
     private readonly IDirectoryUtil _directoryUtil;
