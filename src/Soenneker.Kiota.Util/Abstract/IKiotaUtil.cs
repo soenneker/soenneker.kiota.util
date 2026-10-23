@@ -9,7 +9,7 @@ namespace Soenneker.Kiota.Util.Abstract;
 public interface IKiotaUtil
 {
     /// <summary>
-    /// Generates a C# client from an OpenAPI document.
+    /// Generates a C# client from an OpenAPI document using the Kiota command-line tool.
     /// </summary>
     /// <param name="fixedPath">Path or URL to the OpenAPI document.</param>
     /// <param name="clientName">C# class name for the generated client.</param>

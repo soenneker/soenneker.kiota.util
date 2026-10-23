@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Text;
 using Soenneker.Utils.PooledStringBuilders;
 using System.Threading;
@@ -10,7 +11,6 @@ using Soenneker.Utils.Process.Abstract;
 
 namespace Soenneker.Kiota.Util;
 
-/// <inheritdoc cref="IKiotaUtil" />
 public sealed class KiotaUtil : IKiotaUtil
 {
     private readonly IDirectoryUtil _directoryUtil;
@@ -36,7 +36,9 @@ public sealed class KiotaUtil : IKiotaUtil
         var outputDir = $"src/{libraryName}";
         string arguments = $"generate -l CSharp -d {QuoteArgument(fixedPath)} -o {QuoteArgument(outputDir)} -c {QuoteArgument(clientName)} -n {QuoteArgument(libraryName)} --ebc --cc";
 
-        await _processUtil.Start("kiota", targetDir, arguments, waitForExit: true, cancellationToken: cancellationToken)
+        // Kiota can deadlock while building mutually referenced models in parallel.
+        await _processUtil.Start("kiota", targetDir, arguments, waitForExit: true, timeout: TimeSpan.FromMinutes(15),
+                              environmentalVars: new Dictionary<string, string> { ["DOTNET_PROCESSOR_COUNT"] = "1" }, cancellationToken: cancellationToken)
                           .NoSync();
     }
 
